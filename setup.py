@@ -7,7 +7,7 @@ config = {
     'description': "Helper functions for pymarc",
     'author': "Stefan Schuh",
     'author_email': "stefan.schuh@uni-graz.at",
-    'version': "0.2",
+    'version': "0.3",
     'install_requires': ['pytest', 'pymarc == 4.2.1', 'texttable'],
     'packages': ["pymarc_helpers"],
     'scripts': [],

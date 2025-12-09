@@ -123,6 +123,11 @@ parser.add_argument(
     "Make a side by side html-diff and try to open it in system application.")
 
 parser.add_argument(
+    "--force_utf8",
+    action="store_true",
+    help="Force utf8 encoding, even if the leader says to use MARC8."
+)
+parser.add_argument(
     "--output-format",
     choices=["bin", "xml", "text"],
     default="xml",
@@ -210,7 +215,7 @@ def main():
         outfile_base = input_file_tail[:extension_idx]
         outfile = f"{outfile_base}_output"
 
-    inlist = batch_to_list(args.input_file)
+    inlist = batch_to_list(args.input_file, args.force_utf8)
 
     if args.stats:
         # print stats

@@ -10,7 +10,7 @@ class WrongFieldError(Exception):
     pass
 
 
-def batch_to_list(infile):
+def batch_to_list(infile, force_utf8=False):
     """Take a filename of a marc-file (binary or xml)and return a list of pymarc.Record objects."""
     with open(infile, "rb") as fh:
         # check if its xml or binary
@@ -21,7 +21,7 @@ def batch_to_list(infile):
             reader = pymarc.parse_xml_to_array(fh)
         else:
             # default: utf8_handling="strict"
-            reader = pymarc.MARCReader(fh)
+            reader = pymarc.MARCReader(fh, force_utf8=force_utf8)
 
         record_list = list(reader)
     return record_list
